@@ -13,9 +13,9 @@ namespace TestXbrlTry1975
             // посмотрел реализацию, используется XmlReader для потокового чтения больших файлов,
             // реализованы интерфейсы IEquatable. Я сам бы так сделал, если бы был глубоко погружен в вопрос
 
+            #region read files
             var report1Path = "report1.xbrl";
             var report2Path = "report2.xbrl";
-
 
             Instance report1;
             try
@@ -49,15 +49,17 @@ namespace TestXbrlTry1975
                 Console.WriteLine(exception.InnerException.Message);
                 return;
             }
+            #endregion
 
+            #region check contexts
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Найти ошибки в файле (повторяющиеся контексты).");
             Console.ResetColor();
             FindDuplicates(report1Path, report1);
             FindDuplicates(report2Path, report2);
+            #endregion
 
-
-
+            #region union files
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("Объединить отчеты, на выходе получить новый объединенный отчет (xbrl) с объединенными списками контекстов, единиц измерений и значений (фактов).");
@@ -69,7 +71,9 @@ namespace TestXbrlTry1975
             unionReport.Units.AddRange(report2.Units.Except(unionReport.Units));
             unionReport.Facts.AddRange(report2.Facts.Except(unionReport.Facts));
             unionReport.ToFile(unionPath);
+            #endregion
 
+            #region compare facts
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("Выявить различия: список отсутствующих и новые факты, факты с различающимися значениями.");
@@ -78,7 +82,8 @@ namespace TestXbrlTry1975
             foreach (var message in comparisonReport.Messages)
             {
                 Console.WriteLine($"{message}");
-            }
+            } 
+            #endregion
 
             ////Написать запросы XPath для получения:
             LinqAsXPath(report1Path, report1);
