@@ -1,0 +1,26 @@
+﻿Найти ошибки в файле (повторяющиеся контексты).
+report1.xbrl - A1 дублируется в A4
+report1.xbrl - A41 дублируется в A42
+report1.xbrl - дубли удалены
+report2.xbrl - A1 дублируется в A4
+report2.xbrl - A41 дублируется в A42
+report2.xbrl - A58 дублируется в A60
+report2.xbrl - дубли удалены
+----------------------------------------------------
+Объединить отчеты, на выходе получить новый объединенный отчет (xbrl) с объединенными списками контекстов, единиц измерений и значений (фактов).
+имя файла объединенного отчета: unionReport.xbrl
+----------------------------------------------------
+Выявить различия: список отсутствующих и новые факты, факты с различающимися значениями.
+(a) Metric=CZB_Uchtenn_BB, Value=10000000.2, Unit=iso4217:RUB, Decimals=-3, Context=A54 (ID_sobstv_CZBTaxis=idRU000A0JV4N8, ID_strokiTaxis=НП, IDEmitentaTaxis=id1037739085636)
+(a) Metric=AdresPocht_Prof_uch, Value=119000, г. Москва, ул. Иваново, д.1, Unit=, Decimals=, Context=A0 ()
+(b) Metric=SummaInvestPortf, Value=565827102366.55, Unit=iso4217:RUB, Decimals=-3, Context=A29 (FL_YULAxis=mem-int:YULMember, Rezident_nerezidentAxis=mem-int:RezidentyMember)
+(b) Metric=AdresPocht_Prof_uch, Value=129000, г. Москва, ул. Иваново, д.1, Unit=, Decimals=, Context=A0 ()
+----------------------------------------------------
+report1.xbrl - контексты с периодом xbrli:period/xbrli:instant, равным "2019-04-30"
+A0, A1, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A29, A30, A31, A32, A33, A34, A35, A36, A37, A38, A39, A40, A41, A45, A46, A47, A48, A49, A50, A51, A52, A53, A54, A55, A56, A57, A58, A59
+----------------------------------------------------
+report1.xbrl - контексты со сценарием, использующим измерение dimension="dim-int:ID_sobstv_CZBTaxis"
+A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, A17, A18, A19, A20, A21, A22, A23, A24, A25, A26, A27, A28, A33, A34, A35, A36, A37, A38, A45, A46, A47, A48, A49, A50, A51, A52, A53, A54, A55, A56, A57, A58, A59
+----------------------------------------------------
+report1.xbrl - контексты без сценария
+A0
