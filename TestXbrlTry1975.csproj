@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Diwen.Xbrl" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="report1.xbrl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
