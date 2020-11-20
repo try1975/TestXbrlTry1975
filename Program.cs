@@ -59,20 +59,6 @@ namespace TestXbrlTry1975
             FindDuplicates(report2Path, report2);
             #endregion
 
-            #region union files
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("Объединить отчеты, на выходе получить новый объединенный отчет (xbrl) с объединенными списками контекстов, единиц измерений и значений (фактов).");
-            Console.ResetColor();
-            var unionPath = "unionReport.xbrl";
-            Console.WriteLine($"имя файла объединенного отчета: {unionPath}");
-            var unionReport = Instance.FromFile(report1Path);
-            unionReport.Contexts.AddRange(report2.Contexts.Except(unionReport.Contexts));
-            unionReport.Units.AddRange(report2.Units.Except(unionReport.Units));
-            unionReport.Facts.AddRange(report2.Facts.Except(unionReport.Facts));
-            unionReport.ToFile(unionPath);
-            #endregion
-
             #region compare facts
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("----------------------------------------------------");
@@ -87,6 +73,21 @@ namespace TestXbrlTry1975
 
             ////Написать запросы XPath для получения:
             LinqAsXPath(report1Path, report1);
+
+            #region union files
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("----------------------------------------------------");
+            Console.WriteLine("Объединить отчеты, на выходе получить новый объединенный отчет (xbrl) с объединенными списками контекстов, единиц измерений и значений (фактов).");
+            Console.ResetColor();
+            var unionPath = "unionReport.xbrl";
+            Console.WriteLine($"имя файла объединенного отчета: {unionPath}");
+            var unionReport = report1;// Instance.FromFile(report1Path);
+            unionReport.Contexts.AddRange(report2.Contexts.Except(unionReport.Contexts));
+            unionReport.Units.AddRange(report2.Units.Except(unionReport.Units));
+            unionReport.Facts.AddRange(report2.Facts.Except(unionReport.Facts));
+            unionReport.ToFile(unionPath);
+            #endregion
+
         }
 
         private static void FindDuplicates(string path, Instance instance)
