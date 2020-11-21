@@ -9,6 +9,7 @@
     <None Remove=".gitattributes" />
     <None Remove=".gitignore" />
     <None Remove="output.txt" />
+    <None Remove="README.md" />
     <None Remove="unionReport.xbrl" />
   </ItemGroup>
 
